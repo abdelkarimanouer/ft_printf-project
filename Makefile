@@ -1,7 +1,7 @@
 NAME = libftprintf.a
 CC = cc
 FLAGS = -Wall -Wextra -Werror
-SRC = ft_printf.c
+SRC = ft_printf.c ft_printf_utils.c
 OBJ = $(SRC:%.c=%.o)
 HEADERS = ft_printf.h
 
