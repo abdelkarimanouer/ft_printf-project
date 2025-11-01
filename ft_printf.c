@@ -6,13 +6,13 @@
 /*   By: aanouer <aanouer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 15:59:54 by aanouer           #+#    #+#             */
-/*   Updated: 2025/11/01 17:19:26 by aanouer          ###   ########.fr       */
+/*   Updated: 2025/11/01 18:04:35 by aanouer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	check_char_conversions(char c)
+static int	check_char_conversions(char c)
 {
 	char	*conversions;
 	int		i;
@@ -28,43 +28,41 @@ int	check_char_conversions(char c)
 	return (0);
 }
 
-void	ft_putchar(char c)
+static void	get_count_conversions(const char *format, int *p_count, int *count, int i)
 {
-	write (1, &c, 1);
-}
-
-int	ft_printf(const char *format, ...)
-{
-	int	count;
-	int	i;
-
-	i = 0;
-	count = 0;
 	while (format[i])
 	{
-		if (format[i] == '%' && format[i+ 1] == '%' && format[i + 1])
+		if (format[i] == '%' && format[i + 1] == '%' && format[i + 1] || format[i] == 10)
 		{
-			ft_putchar('%');
-			i++;
-		}
-		else if (format[i] == 10)
-		{
-			ft_putchar(10);
+			ft_putchar(format[i]);
+			*p_count += 1;
 			i++;
 		}
 		else if (format[i] == '%' && format[i + 1] != '%' && format[i + 1]
 			&& check_char_conversions(format[i + 1]))
 		{
-			count++;
+			*count += 1;
 			i++;
 		}
 		else if (format[i - 1] != '%')
 		{
 			ft_putchar(format[i]);
+			*p_count += 1;
 			i++;
 		}
 		else
 			i++;
 	}
-	return (i);
+}
+
+int	ft_printf(const char *format, ...)
+{
+	int	count;
+	int	p_count;
+
+	p_count = 0;
+	count = 0;
+	get_count_conversions(format, &p_count, &count, 0);
+	
+	return (p_count);
 }

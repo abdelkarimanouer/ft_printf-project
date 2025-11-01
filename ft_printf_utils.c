@@ -6,8 +6,13 @@
 /*   By: aanouer <aanouer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 16:11:24 by aanouer           #+#    #+#             */
-/*   Updated: 2025/11/01 16:26:20 by aanouer          ###   ########.fr       */
+/*   Updated: 2025/11/01 18:04:40 by aanouer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	ft_putchar(char c)
+{
+	write (1, &c, 1);
+}
