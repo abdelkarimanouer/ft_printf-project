@@ -6,7 +6,7 @@
 /*   By: aanouer <aanouer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 15:59:54 by aanouer           #+#    #+#             */
-/*   Updated: 2025/11/01 18:04:35 by aanouer          ###   ########.fr       */
+/*   Updated: 2025/11/01 18:24:49 by aanouer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,20 @@ static int	check_char_conversions(char c)
 	return (0);
 }
 
-static void	get_count_conversions(const char *format, int *p_count, int *count, int i)
+static void	print_arg(va_list args, char conversions)
 {
-	while (format[i])
+	
+}
+
+static void	get_count_conversions(const char *format, int *p_count, int *count)
+{
+	while (*format)
 	{
-		if (format[i] == '%' && format[i + 1] == '%' && format[i + 1] || format[i] == 10)
+		if (*format == '%' && *format + 1 == '%' && *format + 1 || *format == 10)
 		{
-			ft_putchar(format[i]);
+			ft_putchar(*format);
 			*p_count += 1;
-			i++;
+			*(format)++;
 		}
 		else if (format[i] == '%' && format[i + 1] != '%' && format[i + 1]
 			&& check_char_conversions(format[i + 1]))
@@ -57,12 +62,11 @@ static void	get_count_conversions(const char *format, int *p_count, int *count, 
 
 int	ft_printf(const char *format, ...)
 {
-	int	count;
-	int	p_count;
+	int		count;
+	int		p_count;
 
 	p_count = 0;
 	count = 0;
 	get_count_conversions(format, &p_count, &count, 0);
-	
 	return (p_count);
 }
