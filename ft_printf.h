@@ -6,7 +6,7 @@
 /*   By: aanouer <aanouer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 15:59:52 by aanouer           #+#    #+#             */
-/*   Updated: 2025/11/01 18:04:57 by aanouer          ###   ########.fr       */
+/*   Updated: 2025/11/01 19:37:03 by aanouer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,5 @@
 # include <stdarg.h>
 
 int		ft_printf(const char *format, ...);
-void	ft_putchar(char c);
 
 #endif

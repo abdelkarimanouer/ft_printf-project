@@ -6,67 +6,49 @@
 /*   By: aanouer <aanouer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 15:59:54 by aanouer           #+#    #+#             */
-/*   Updated: 2025/11/01 18:24:49 by aanouer          ###   ########.fr       */
+/*   Updated: 2025/11/01 20:14:45 by aanouer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft/libft.h"
 
-static int	check_char_conversions(char c)
+static void	get_and_chack_printcount(char c, va_list arg)
 {
-	char	*conversions;
+	if (c == 'c')
+		ft_putchar_fd(va_arg(arg, int), 1);
+	if (c == 's')
+		ft_putstr_fd(va_arg(arg, char *), 1);
+	if (c == '%')
+		ft_putchar_fd('%', 1);
+	if (c == 'd')
+		ft_putnbr_fd(va_arg(arg, int), 1);
+	if (c == 'i')
+		ft_putnbr_fd(va_arg(arg, int), 1);
+	if (c == '\n')
+		ft_putchar_fd('\n', 1);
+	else
+		return ;
+}
+
+int	ft_printf(const char *str, ...)
+{
 	int		i;
+	va_list	arg;
 
+	if (!str)
+		return (-1);
 	i = 0;
-	conversions = "cspdiuxX";
-	while (i < 8)
+	va_start(arg, str);
+	while (str[i])
 	{
-		if (c == conversions[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-static void	print_arg(va_list args, char conversions)
-{
-	
-}
-
-static void	get_count_conversions(const char *format, int *p_count, int *count)
-{
-	while (*format)
-	{
-		if (*format == '%' && *format + 1 == '%' && *format + 1 || *format == 10)
-		{
-			ft_putchar(*format);
-			*p_count += 1;
-			*(format)++;
-		}
-		else if (format[i] == '%' && format[i + 1] != '%' && format[i + 1]
-			&& check_char_conversions(format[i + 1]))
-		{
-			*count += 1;
-			i++;
-		}
-		else if (format[i - 1] != '%')
-		{
-			ft_putchar(format[i]);
-			*p_count += 1;
-			i++;
-		}
+		if (str[i] == '%')
+			get_and_chack_printcount(str[++i], arg);
 		else
+			ft_putchar_fd(str[i], 1);
+		if (str[i])
 			i++;
 	}
-}
-
-int	ft_printf(const char *format, ...)
-{
-	int		count;
-	int		p_count;
-
-	p_count = 0;
-	count = 0;
-	get_count_conversions(format, &p_count, &count, 0);
-	return (p_count);
+	va_end(arg);
+	return (555);
 }
