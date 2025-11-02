@@ -6,7 +6,7 @@
 /*   By: aanouer <aanouer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 08:15:43 by aanouer           #+#    #+#             */
-/*   Updated: 2025/11/02 09:22:50 by aanouer          ###   ########.fr       */
+/*   Updated: 2025/11/02 09:33:04 by aanouer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,20 @@ int	put_number_hex_lower(unsigned int n)
 	return (write(1, &hexa[n % 16], 1));
 }
 
-static int handle_long_address(long n)
+static int	handle_long_address(long n)
 {
 	char	*hexa;
 
 	hexa = "0123456789abcdef";
 	if (n >= 16)
 		handle_long_address(n / 16);
-	
 	return (write(1, &hexa[n % 16], 1));
 }
 
 int	put_number_address(void *n)
 {
 	unsigned long	pn;
-	int		count;
+	int				count;
 
 	count = write(1, "0x", 2);
 	pn = (unsigned long) n;
