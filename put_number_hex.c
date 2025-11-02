@@ -6,7 +6,7 @@
 /*   By: aanouer <aanouer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 08:15:43 by aanouer           #+#    #+#             */
-/*   Updated: 2025/11/02 10:56:10 by aanouer          ###   ########.fr       */
+/*   Updated: 2025/11/02 12:09:32 by aanouer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,25 @@
 int	put_number_hex_lower(unsigned int n)
 {
 	char	*hexa;
+	int		count;
 
 	hexa = "0123456789abcdef";
+	count = 0;
 	if (n >= 16)
-		put_number_hex_lower(n / 16);
-	return (write(1, &hexa[n % 16], 1));
+		count += put_number_hex_lower(n / 16);
+	return (write(1, &hexa[n % 16], 1) + count);
 }
 
-static void	print_address(long n, int *count)
+static int	print_address(unsigned long n)
 {
 	char	*hexa;
+	int		count;
 
 	hexa = "0123456789abcdef";
+	count = 0;
 	if (n >= 16)
-	{
-		*count += 1;
-		print_address(n / 16, count);
-	}
-	write(1, &hexa[n % 16], 1);
+		count += print_address(n / 16);
+	return (write(1, &hexa[n % 16], 1) + count);
 }
 
 int	put_number_address(void *n)
@@ -40,20 +41,21 @@ int	put_number_address(void *n)
 	unsigned long	pn;
 	int				count;
 
-	count = write(1, "0x", 2);;
+	if (!n)
+		return (write(1, "(nil)", 5));
+	count = write(1, "0x", 2);
 	pn = (unsigned long) n;
-	print_address(pn, &count);
-	return (count);
+	return (print_address(pn) + count);
 }
 
 int	put_number_hex_upper(unsigned int n)
 {
 	char	*hexa;
 	int		count;
-	
+
 	hexa = "0123456789ABCDEF";
 	count = 0;
 	if (n >= 16)
-		put_number_hex_upper(n / 16);
-	return (write(1, &hexa[n % 16], 1));
+		count += put_number_hex_upper(n / 16);
+	return (write(1, &hexa[n % 16], 1) + count);
 }
