@@ -6,13 +6,13 @@
 /*   By: aanouer <aanouer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 15:59:54 by aanouer           #+#    #+#             */
-/*   Updated: 2025/11/02 08:50:11 by aanouer          ###   ########.fr       */
+/*   Updated: 2025/11/02 09:28:16 by aanouer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	get_and_chack_printcount(char c, va_list arg)
+static int	get_and_check_printcount(char c, va_list arg)
 {
 	if (c == 'c')
 		return (ft_putchar(va_arg(arg, int)));
@@ -52,7 +52,7 @@ int	ft_printf(const char *str, ...)
 	while (str[i])
 	{
 		if (str[i] == '%')
-			p_count += get_and_chack_printcount(str[++i], arg);
+			p_count += get_and_check_printcount(str[++i], arg);
 		else
 			p_count += ft_putchar(str[i]);
 		if (str[i])

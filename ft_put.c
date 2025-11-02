@@ -6,7 +6,7 @@
 /*   By: aanouer <aanouer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 08:16:58 by aanouer           #+#    #+#             */
-/*   Updated: 2025/11/02 08:48:34 by aanouer          ###   ########.fr       */
+/*   Updated: 2025/11/02 09:19:44 by aanouer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_putstr(char *str)
 	i = 0;
 	while (str[i])
 	{
-		write(1, &str[i], 1);
+		ft_putchar(str[i]);
 		i++;
 	}
 	return (i);
