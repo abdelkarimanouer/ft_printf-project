@@ -6,7 +6,7 @@
 /*   By: aanouer <aanouer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 08:16:58 by aanouer           #+#    #+#             */
-/*   Updated: 2025/11/02 08:26:14 by aanouer          ###   ########.fr       */
+/*   Updated: 2025/11/02 08:48:34 by aanouer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,16 @@ int	ft_putnbr(int n)
 		n *= -1;
 		count++;
 	}
+	if (n >= 10)
+		ft_putnbr(n / 10);
+	return (ft_putchar((n % 10) + '0') + count);
+}
+
+int	ft_put_unsigned_nbr(unsigned int n)
+{
+	int	count;
+
+	count = 0;
 	if (n >= 10)
 		ft_putnbr(n / 10);
 	return (ft_putchar((n % 10) + '0') + count);
