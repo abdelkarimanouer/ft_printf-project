@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_number_hex.c                                   :+:      :+:    :+:   */
+/*   ft_put_hex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aanouer <aanouer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 08:15:43 by aanouer           #+#    #+#             */
-/*   Updated: 2025/11/02 12:09:32 by aanouer          ###   ########.fr       */
+/*   Updated: 2025/11/03 08:39:00 by aanouer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	put_number_hex_lower(unsigned int n)
 	count = 0;
 	if (n >= 16)
 		count += put_number_hex_lower(n / 16);
-	return (write(1, &hexa[n % 16], 1) + count);
+	return (ft_putchar(hexa[n % 16]) + count);
 }
 
 static int	print_address(unsigned long n)
