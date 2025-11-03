@@ -6,7 +6,7 @@
 /*   By: aanouer <aanouer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 08:15:43 by aanouer           #+#    #+#             */
-/*   Updated: 2025/11/03 08:39:00 by aanouer          ###   ########.fr       */
+/*   Updated: 2025/11/03 08:39:52 by aanouer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	print_address(unsigned long n)
 	count = 0;
 	if (n >= 16)
 		count += print_address(n / 16);
-	return (write(1, &hexa[n % 16], 1) + count);
+	return (ft_putchar(hexa[n % 16]) + count);
 }
 
 int	put_number_address(void *n)
@@ -57,5 +57,5 @@ int	put_number_hex_upper(unsigned int n)
 	count = 0;
 	if (n >= 16)
 		count += put_number_hex_upper(n / 16);
-	return (write(1, &hexa[n % 16], 1) + count);
+	return (ft_putchar(hexa[n % 16]) + count);
 }
