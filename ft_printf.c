@@ -6,7 +6,7 @@
 /*   By: aanouer <aanouer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 15:59:54 by aanouer           #+#    #+#             */
-/*   Updated: 2025/11/03 08:24:09 by aanouer          ###   ########.fr       */
+/*   Updated: 2025/11/03 08:26:02 by aanouer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	ft_printf(const char *str, ...)
 
 	if (!str)
 		return (-1);
+	if (str[0] == '\0')
+		return (0);
 	i = 0;
 	p_count = 0;
 	va_start(arg, str);
