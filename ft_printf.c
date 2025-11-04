@@ -6,7 +6,7 @@
 /*   By: aanouer <aanouer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 15:59:54 by aanouer           #+#    #+#             */
-/*   Updated: 2025/11/03 09:38:46 by aanouer          ###   ########.fr       */
+/*   Updated: 2025/11/04 11:25:40 by aanouer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ static int	get_and_check_printcount(char c, va_list arg)
 		return (put_number_hex_lower(va_arg(arg, unsigned int)));
 	if (c == 'X')
 		return (put_number_hex_upper(va_arg(arg, unsigned int)));
-	if (c == '\n')
-		return (ft_putchar('\n'));
 	if (c == '%')
 		return (ft_putchar('%'));
 	else
