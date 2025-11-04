@@ -6,7 +6,7 @@
 /*   By: aanouer <aanouer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 15:59:54 by aanouer           #+#    #+#             */
-/*   Updated: 2025/11/04 11:25:40 by aanouer          ###   ########.fr       */
+/*   Updated: 2025/11/04 11:26:29 by aanouer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static int	get_and_check_printcount(char c, va_list arg)
 	else
 		return (0);
 }
+
+
 
 int	ft_printf(const char *str, ...)
 {
