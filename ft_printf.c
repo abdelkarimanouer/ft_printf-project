@@ -6,14 +6,11 @@
 /*   By: aanouer <aanouer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 15:59:54 by aanouer           #+#    #+#             */
-/*   Updated: 2025/11/04 11:27:09 by aanouer          ###   ########.fr       */
+/*   Updated: 2025/11/04 11:27:19 by aanouer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-
-
 
 static int	get_and_check_printcount(char c, va_list arg)
 {
