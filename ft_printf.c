@@ -6,7 +6,7 @@
 /*   By: aanouer <aanouer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 15:59:54 by aanouer           #+#    #+#             */
-/*   Updated: 2025/11/04 11:27:19 by aanouer          ###   ########.fr       */
+/*   Updated: 2025/11/04 11:27:32 by aanouer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,3 +61,5 @@ int	ft_printf(const char *str, ...)
 	va_end(arg);
 	return (p_count);
 }
+
+
